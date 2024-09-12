@@ -1,0 +1,55 @@
+/* Price Tracker Section */
+#price-tracker {
+    padding: 20px;
+    background-color: #f9f9f9a9;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: auto;
+}
+
+#price-tracker h2 {
+    margin-bottom: 20px;
+}
+
+/* Label Styling */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    
+}
+
+input[type="text"], input[type="number"], input[type="email"] {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #f48fb1;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff80ab;
+    transform: translateY(-5px);
+}
+
+.centered-content {
+    text-align: center;
+}
+

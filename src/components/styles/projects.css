@@ -1,0 +1,52 @@
+/* Projects Section */
+#projects {
+    padding: 20px;
+    margin: 100px auto 60px; /* Add margin-top to prevent overlapping */
+    background-color: rgba(255, 255, 255, 0.7);
+    max-width: 900px; /* Limit the width of the container */
+    border-radius: 15px; 
+}
+
+/* Individual Project Container */
+.project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+/* Project Text */
+.project-text {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* Project Image */
+.project-image {
+    flex: 0 0 300px;
+}
+
+.project-image img {
+    width: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .project {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .project-image {
+        margin-top: 20px;
+    }
+
+    .project-text {
+        padding-right: 0;
+    }
+}

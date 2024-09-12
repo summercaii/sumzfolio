@@ -1,0 +1,118 @@
+/* Coffee Shop Section */
+#coffee-shops {
+    background-color: rgb(255, 255, 255); 
+    padding: 40px;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Coffee Shop List */
+#coffee-shops ol {
+    list-style-type: decimal;
+    margin: 0;
+    padding-left: 20px;
+}
+
+#coffee-shops ol li {
+    margin-bottom: 15px;
+}
+
+#coffee-shops ol li strong {
+    font-size: 1.2rem;
+}
+
+#coffee-shops ol li p {
+    margin: 5px 0;
+}
+
+/* Photo Gallery */
+.photo-gallery2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%; 
+    max-width: 300px; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 8px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .caption {
+    opacity: 1;
+}
+
+/* Content Layout */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.coffee-shop-list {
+    flex: 1;
+    padding-right: 20px;
+}
+
+/* For Smaller Screens */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coffee-shop-list {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .photo-gallery {
+        grid-template-columns: 1fr; /* Stack images on smaller screens */
+    }
+
+    .gallery-item {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+.drink-preference {
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: #6B4E16; /* Optional color change */
+  }
+  

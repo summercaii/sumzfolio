@@ -1,0 +1,38 @@
+/* About Section */
+#about {
+    background-color: rgba(255, 255, 255, 0.7); 
+    padding: 20px;
+    margin: 100px auto 60px; /* Center it horizontally and vertically with margins */
+    border-radius: 15px; /* Add rounded corners */
+    max-width: 900px;
+  }
+  
+  /* About Container */
+  .about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* About Text */
+  .about-text {
+    flex: 1;
+    margin-right: auto; /* Increase the margin-right to create more space for the text */
+  }
+  
+  /* About Image */
+  .about-image {
+    flex: 0 0 400px;
+    margin-left: auto; /* Automatically push the image to the right */
+  }
+  
+  .about-image img {
+    max-width: 400px;
+    max-height: 400px; 
+    width: auto; 
+    height: auto; 
+    object-fit: cover;
+    margin-left: 100px; /* Additional margin to move the image even more to the right */
+  }
+  

@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "./static/css/main.e73f773d.css",
+    "main.js": "./static/js/main.95e706fd.js",
+    "static/js/453.60f96017.chunk.js": "./static/js/453.60f96017.chunk.js",
+    "static/media/maru.jpg": "./static/media/maru.3b92bac2af3338f743d6.jpg",
+    "static/media/ralphs.jpg": "./static/media/ralphs.afe01640221c8fe5f54c.jpg",
+    "static/media/home.jpg": "./static/media/home.c0caa4bfb2c9b776558b.jpg",
+    "static/media/loquat.jpg": "./static/media/loquat.42d3353bee44cd6f3385.jpg",
+    "static/media/blue.jpg": "./static/media/blue.3de38f1eb591123e3fdc.jpg",
+    "static/media/week.jpg": "./static/media/week.4bd0a684909dca61c6b4.jpg",
+    "static/media/here.jpg": "./static/media/here.385a0812d87946971fc6.jpg",
+    "static/media/movement.jpg": "./static/media/movement.aac784a7e60e426a9967.jpg",
+    "static/media/sumz.png": "./static/media/sumz.04ab76cd41185a3b1f00.png",
+    "static/media/summercai.png": "./static/media/summercai.62cbd79ffb6b0672a44d.png",
+    "static/media/recs.png": "./static/media/recs.5bf154a9d45c58ea10ad.png",
+    "static/media/amazon.png": "./static/media/amazon.03ad7ae882478e5a43c5.png",
+    "index.html": "./index.html",
+    "main.e73f773d.css.map": "./static/css/main.e73f773d.css.map",
+    "main.95e706fd.js.map": "./static/js/main.95e706fd.js.map",
+    "453.60f96017.chunk.js.map": "./static/js/453.60f96017.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e73f773d.css",
+    "static/js/main.95e706fd.js"
+  ]
+}

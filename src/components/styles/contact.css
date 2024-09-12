@@ -1,0 +1,10 @@
+/* Contact Section */
+#contact {
+    background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent background */
+    padding: 40px; /* Add padding around the contact section */
+    margin: 100px auto 60px; /* Center it horizontally and provide vertical spacing */
+    border-radius: 15px; 
+    max-width: 900px; 
+    text-align: center; /* Center-align text */
+  }
+  
