@@ -10,10 +10,11 @@ from email.mime.multipart import MIMEMultipart
 from flask_cors import CORS
 from apscheduler.schedulers.background import BackgroundScheduler
 
+
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://summer-cai.com"]}}, supports_credentials=True, always_send=True)
 
-db_url = os.getenv("DATABASE_PUBLIC_URL")
+db_url = os.getenv("DATABASE_URL")
 
 def get_db_connection():
     return psycopg2.connect(db_url)
@@ -31,17 +32,19 @@ def create_table():
                 )
             ''')
             conn.commit()
-
 create_table()
 
+# Function to check Amazon product prices
 def check_amazon_price(url):
     headers = {
-        ''
+        'User-Agent': os.getenv('USER_AGENT'),
+        'Accept-Language': os.getenv('ACCEPT_LANGUAGE')
     }
 
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, 'html.parser')
 
+    # find all possible prices
     price_span = soup.find('span', {'id': 'priceblock_dealprice'})
     if not price_span:
         price_span = soup.find('span', {'id': 'priceblock_ourprice'})
@@ -49,22 +52,26 @@ def check_amazon_price(url):
         whole_price = soup.find('span', {'class': 'a-price-whole'})
         fraction_price = soup.find('span', {'class': 'a-price-fraction'})
         if whole_price and fraction_price:
-            price_span = whole_price.text + fraction_price.text 
+            price_span = whole_price.text + fraction_price.text
+
     if price_span:
         return float(price_span.replace(',', ''))
     else:
         return None
 
+# send an email notification
 def send_email_notification(recipient_email, product_url, current_price, threshold=None, discount=None):
-    sender_email = ""  # add email pw to env
-    password = ""
-    # create email
+    sender_email = os.getenv("EMAIL_USER")
+    password = os.getenv("EMAIL_PASSWORD")
+    
+    # subject
     message = MIMEMultipart()
     message['From'] = sender_email
     message['To'] = recipient_email
-    message['Subject'] = "Amazon Price Drop !!!"
+    message['Subject'] = "AMAZON PRICE DROP!!!"
 
-    # body
+    # email
+    # @todo: parse product name later
     body = f"The price for {product_url} has dropped to {current_price}!"
     message.attach(MIMEText(body, 'plain'))
 
@@ -72,7 +79,7 @@ def send_email_notification(recipient_email, product_url, current_price, thresho
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(sender_email, password) 
+        server.login(sender_email, password)  # Use the app-specific password here
         text = message.as_string()
         server.sendmail(sender_email, recipient_email, text)
         server.quit()
@@ -80,6 +87,7 @@ def send_email_notification(recipient_email, product_url, current_price, thresho
     except Exception as e:
         print(f"Failed to send email: {e}")
 
+# periodically check prices for tracked products
 def check_prices_periodically():
     with get_db_connection() as conn:
         with conn.cursor() as cur:
@@ -95,17 +103,17 @@ def check_prices_periodically():
             for product in tracked_products:
                 product_id, product_url, price_threshold, email, notification_sent = product
                 current_price = check_amazon_price(product_url)
-                print(f"Checking product: {product_url}, Current price: {current_price}, Threshold: {price_threshold}, Notification sent: {notification_sent}")
-
+                
                 if current_price is not None:
-                    # if the price is below the threshold and no notification has been sent
+                    # if price below threshold and email not sent yet
                     if current_price <= price_threshold and not notification_sent:
-                        print(f"sending email notification for {product_url}")
                         send_email_notification(email, product_url, current_price, threshold=price_threshold)
 
+                        # mark as send to avoid spam emails
                         cur.execute("UPDATE tracked_products SET notification_sent = TRUE WHERE id = %s", (product_id,))
                         conn.commit()
 
+                    # if the price goes back up, reset the notification flag
                     elif current_price > price_threshold and notification_sent:
                         cur.execute("UPDATE tracked_products SET notification_sent = FALSE WHERE id = %s", (product_id,))
                         conn.commit()
@@ -117,7 +125,7 @@ def check_prices_periodically():
 def track_price():
     if request.method == 'OPTIONS':
         response = make_response('', 204)
-        response.headers["Access-Control-Allow-Origin"] = "*" 
+        response.headers["Access-Control-Allow-Origin"] = "*"
         response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
         response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, Origin"
         return response
@@ -127,18 +135,18 @@ def track_price():
     price_threshold = float(data.get('price_threshold', 0))
     email = data.get('email')
 
-    # insert product into the database
+    # add to db
     with get_db_connection() as conn:
         with conn.cursor() as cur:
-            # clear db
+            # clear table
             cur.execute("DELETE FROM tracked_products WHERE email = %s", (email,))
-            
+            # insert
             cur.execute(
                 "INSERT INTO tracked_products (url, price_threshold, email) VALUES (%s, %s, %s)",
                 (product_url, price_threshold, email)
             )
             conn.commit()
-    # just making sure
+    # just to make sure
     response = jsonify({'message': 'Price tracking initiated successfully!'})
     response.headers.add("Access-Control-Allow-Origin", "*")
     response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")

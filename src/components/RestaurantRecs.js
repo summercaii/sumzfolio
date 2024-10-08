@@ -16,8 +16,14 @@ function RestaurantRecs() {
     try {
       const API_URL = process.env.NODE_ENV === 'production' ? 'https://summer-cai-2d1ea290d5a4.herokuapp.com' : 'http://localhost:5000';
 
-      const response = await fetch(`${API_URL}/api/recommendations?restaurant=${encodeURIComponent(restaurant)}&location=${encodeURIComponent(location)}`);
-
+      const response = await fetch(`${API_URL}/api/recommendations?restaurant=${encodeURIComponent(restaurant)}&location=${encodeURIComponent(location)}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
       if (response.ok) {
         const data = await response.json();
         if (data.length > 0) {

@@ -1,16 +1,25 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS  
-from backend.tracker import track_price
+from tracker import track_price
+import os
 import requests
 
 app = Flask(__name__)
-CORS(app, origins=["https://summer-cai.com"])
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://summer-cai.com"]}})
+
+# preflight requests
+@app.route('/api/recommendations', methods=['OPTIONS'])
+def handle_preflight():
+    response = jsonify({'status': 'preflight'})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
+    return response
 
 @app.route('/')
 def index():
-    return "Flask app is running!"
+    return ""
 
-# price helper function
 def get_price_range(price):
     if price == '$':
         return [1]
@@ -22,18 +31,16 @@ def get_price_range(price):
         return [3, 4]
     return []
 
-API_KEY = '' # add this later
+API_KEY = os.getenv('YELP_API_KEY')
 
+# get restaurant data from yelp, returns list of restaurants or empty list18032
 def get_restaurant_data(location, radius, cuisine=None, price_range=None):
-    headers = {'Authorization': f'Bearer {API_KEY}'}
     url = 'https://api.yelp.com/v3/businesses/search'
-
-    radius_meters = int(radius * 1609.34)
-
+    headers = {'Authorization': f'Bearer {API_KEY}'}
     params = {
         'term': cuisine if cuisine else 'restaurant',
         'location': location,
-        'radius': radius_meters,
+        'radius': int(radius * 1609.34),
         'price': get_price_range(price_range),
         'limit': 10
     }
@@ -64,7 +71,8 @@ def get_restaurant_data(location, radius, cuisine=None, price_range=None):
     else:
         return []
 
-# get favorite restaurant info from yelp based on restaurant name
+# get user input restaurant info from yelp
+# cuisine, price range
 def get_restaurant_info(restaurant, location):
     headers = {'Authorization': f'Bearer {API_KEY}'}
     url = 'https://api.yelp.com/v3/businesses/search'
@@ -88,7 +96,7 @@ def get_restaurant_info(restaurant, location):
             }
     return None
 
-# filter restaurants similar to the favorite
+# filter restaurant list by radius, price range, cuisine
 def filter_restaurants(restaurants, favorite_info, radius, price_range):
     recommended = []
     cuisine = favorite_info['cuisine']
@@ -110,13 +118,14 @@ def get_recommendations():
     restaurant_name = request.args.get('restaurant')
     location = request.args.get('location')
     radius = float(request.args.get('radius', 5))
+    # get user restaurant
     favorite_info = get_restaurant_info(restaurant_name, location)
     if favorite_info:
+        # get similar restaurant data based on user info
         restaurants = get_restaurant_data(location, radius, favorite_info['cuisine'], favorite_info['price_range'])
+        # filter restaurants similar
         recommendations = filter_restaurants(restaurants, favorite_info, radius, favorite_info['price_range'])
-        
         return jsonify(recommendations)
-
     return jsonify([]), 404
 
 @app.route('/track_price', methods=['POST', 'OPTIONS'])

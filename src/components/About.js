@@ -11,11 +11,15 @@ function About() {
         <div className="about-text">
           <h2>About Me !!!</h2>
           <p>
-            I'm a senior at California Polytechnic State University at San Luis Obispo, pursuing a BS degree in Computer Engineering.
-            I'm passionate about software development and excited to apply my skills in technology to solve complex problems and
-            create meaningful solutions. When I'm not coding, you’ll find me <Link to="/coffee-shops">at a coffee shop</Link>, 
-            <Link to="/restaurant-recs"> trying new restaurants</Link>, or <Link to="/price-tracker">shopping</Link>.
+            I'm a senior at California Polytechnic State University at San Luis Obispo, pursuing a B.S. degree in Computer Engineering.
+            With a strong passion for building innovative solutions, I'm excited to apply my technical skills to create software that 
+            makes a real impact. When I'm not coding, you might find me:
           </p>
+          <ol style={{ listStyleType: 'decimal' }}>
+            <li><Link to="/coffee-shops">At a coffee shop</Link></li>
+            <li><Link to="/restaurant-recs">Trying new restaurants</Link></li>
+            <li><Link to="/price-tracker">Online shopping</Link></li>
+          </ol>
         </div>
         <div className="about-image">
           <img src={sumz} alt="Summer Cai" />
