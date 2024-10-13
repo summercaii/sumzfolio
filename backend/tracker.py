@@ -9,10 +9,16 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from flask_cors import CORS
 from apscheduler.schedulers.background import BackgroundScheduler
-
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://summer-cai.com"]}}, supports_credentials=True, always_send=True)
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["5 per minute"]
+)
 
 db_url = os.getenv("DATABASE_URL")
 
@@ -34,7 +40,7 @@ def create_table():
             conn.commit()
 create_table()
 
-# Function to check Amazon product prices
+# function to check Amazon product prices
 def check_amazon_price(url):
     headers = {
         'User-Agent': os.getenv('USER_AGENT'),

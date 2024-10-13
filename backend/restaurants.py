@@ -3,15 +3,22 @@ from flask_cors import CORS
 from tracker import track_price
 import os
 import requests
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://summer-cai.com"]}})
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["30 per minute"]
+)
 
 # preflight requests
 @app.route('/api/recommendations', methods=['OPTIONS'])
 def handle_preflight():
     response = jsonify({'status': 'preflight'})
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Origin', 'https://summer-cai.com')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
     return response
