@@ -7,21 +7,19 @@
     border-radius: 15px;
   }
   
-  /* Container to center and size the image */
   .resume{
     text-align: center; 
     margin-top: 20px;
   }
   
   .resume img {
-    max-width: 100%; /* Ensures the image fits within its container */
-    width: 90%;      /* Set a specific width for the image */
-    height: auto;    /* Maintain aspect ratio */
+    max-width: 100%; 
+    width: 90%;     
+    height: auto;   
     display: block;
-    margin: 0 auto;  /* Center the image */
+    margin: 0 auto; 
   }
   
-  /* Button section */
   .centered {
     text-align: center;
     margin-top: 20px;

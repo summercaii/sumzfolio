@@ -1,0 +1,86 @@
+/* General Styles for Current Projects */
+#current-projects {
+    padding: 20px;
+    background-color: #f9f9f9a1;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    
+}
+
+#current-projects p {
+    padding-left: 30px;
+}
+
+#current-projects ul {
+    margin-left: 30px;
+}
+
+.sub-list {
+    margin-left: 25px; 
+    padding-left: 20px;
+    list-style-type: circle; 
+}
+
+.sub-list li {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+#current-projects ul {
+    list-style: disc;
+    
+    padding: 0;
+}
+
+#current-projects li {
+    margin: 10px 0;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+/* Video Styling */
+.video-container {
+    display: flex;
+    margin-top: 15px;
+}
+
+.video-container video {
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+/* Button Styling */
+.project-button {
+    background-color: #f48fb1;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.project-button:hover {
+    background-color: #d81b60;
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #current-projects {
+        max-width: 90%;
+    }
+
+    .video-container video {
+        max-width: 100%;
+    }
+}

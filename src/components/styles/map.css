@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;  /* Adds margin and centers the map */
-    max-width: 1200px;  /* Limits the map width for large screens */
+    margin: 20px auto;  
+    max-width: 1200px;
     height: 600px;
     padding: 10px;
   }
@@ -12,6 +12,6 @@
     width: 100%;
     height: 100%;
     border: none;
-    border-radius: 10px;  /* Adds a border radius to soften the edges */
+    border-radius: 10px; 
   }
   

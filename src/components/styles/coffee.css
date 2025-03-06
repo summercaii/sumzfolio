@@ -7,7 +7,6 @@
     margin: 0 auto;
 }
 
-/* Coffee Shop List */
 #coffee-shops ol {
     list-style-type: decimal;
     margin: 0;
@@ -26,7 +25,6 @@
     margin: 5px 0;
 }
 
-/* Photo Gallery */
 .photo-gallery2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
@@ -76,7 +74,6 @@
     opacity: 1;
 }
 
-/* Content Layout */
 .content-wrapper {
     display: flex;
     justify-content: space-between;
@@ -88,7 +85,6 @@
     padding-right: 20px;
 }
 
-/* For Smaller Screens */
 @media (max-width: 768px) {
     .content-wrapper {
         flex-direction: column;
@@ -101,7 +97,7 @@
     }
 
     .photo-gallery {
-        grid-template-columns: 1fr; /* Stack images on smaller screens */
+        grid-template-columns: 1fr;
     }
 
     .gallery-item {
@@ -113,6 +109,6 @@
 .drink-preference {
     font-size: 1.2em;
     margin: 20px 0;
-    color: #6B4E16; /* Optional color change */
+    color: #6B4E16;
   }
   

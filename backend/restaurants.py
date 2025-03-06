@@ -6,6 +6,7 @@ import requests
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
+API_KEY = os.getenv('YELP_API_KEY')
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://summer-cai.com"]}})
 limiter = Limiter(
@@ -27,6 +28,7 @@ def handle_preflight():
 def index():
     return ""
 
+# map prices to yelp api list
 def get_price_range(price):
     if price == '$':
         return [1]
@@ -38,10 +40,9 @@ def get_price_range(price):
         return [3, 4]
     return []
 
-API_KEY = os.getenv('YELP_API_KEY')
-
-# get restaurant data from yelp, returns list of restaurants or empty list18032
+# get restaurant data from yelp, returns list of restaurants or empty list
 def get_restaurant_data(location, radius, cuisine=None, price_range=None):
+    # yelp api
     url = 'https://api.yelp.com/v3/businesses/search'
     headers = {'Authorization': f'Bearer {API_KEY}'}
     params = {
@@ -51,26 +52,26 @@ def get_restaurant_data(location, radius, cuisine=None, price_range=None):
         'price': get_price_range(price_range),
         'limit': 10
     }
-
+    
     response = requests.get(url, headers=headers, params=params)
     if response.status_code == 200:
         data = response.json()
         restaurants = []
-        for business in data['businesses']:
-            business_details = requests.get(f'https://api.yelp.com/v3/businesses/{business["id"]}', headers=headers)
-            business_details_data = business_details.json()
-
+        for bus in data['businesses']:
+            bus_info = requests.get(f'https://api.yelp.com/v3/businesses/{bus["id"]}', headers=headers)
+            bus_info_data = bus_info.json()
+            # parse restaurant info
             restaurant = {
-                'name': business['name'],
-                'rating': business['rating'],
-                'cuisine': business['categories'][0]['title'] if business['categories'] else 'N/A',
-                'review_count': business['review_count'], 
-                'phone': business.get('display_phone', 'Not available'),
-                'images': business_details_data.get('photos', []),
-                'price_range': business.get('price', 'N/A'),
-                'distance': round(business['distance'] / 1609.34, 2),
-                'location': business['location']['address1'],
-                'url': business['url']
+                'name': bus['name'],
+                'rating': bus['rating'],
+                'cuisine': bus['categories'][0]['title'] if bus['categories'] else 'N/A',
+                'review_count': bus['review_count'], 
+                'phone': bus.get('display_phone', 'Not available'),
+                'images': bus_info_data.get('photos', []),
+                'price_range': bus.get('price', 'N/A'),
+                'distance': round(bus['distance'] / 1609.34, 2),
+                'location': bus['location']['address1'],
+                'url': bus['url']
             }
             restaurants.append(restaurant)
             
@@ -94,12 +95,12 @@ def get_restaurant_info(restaurant, location):
     if response.status_code == 200:
         data = response.json()
         if data['businesses']:
-            business = data['businesses'][0]
+            bus = data['businesses'][0]
             return {
-                'name': business['name'],
-                'cuisine': business['categories'][0]['title'] if business['categories'] else 'N/A',
-                'price_range': business.get('price', 'N/A'),
-                'rating': business['rating']
+                'name': bus['name'],
+                'cuisine': bus['categories'][0]['title'] if bus['categories'] else 'N/A',
+                'price_range': bus.get('price', 'N/A'),
+                'rating': bus['rating']
             }
     return None
 
@@ -122,17 +123,17 @@ def filter_restaurants(restaurants, favorite_info, radius, price_range):
 # API endpoint to get restaurant recommendations
 @app.route('/api/recommendations', methods=['GET'])
 def get_recommendations():
-    restaurant_name = request.args.get('restaurant')
+    rest_name = request.args.get('restaurant')
     location = request.args.get('location')
     radius = float(request.args.get('radius', 5))
     # get user restaurant
-    favorite_info = get_restaurant_info(restaurant_name, location)
-    if favorite_info:
+    fav_info = get_restaurant_info(rest_name, location)
+    if fav_info:
         # get similar restaurant data based on user info
-        restaurants = get_restaurant_data(location, radius, favorite_info['cuisine'], favorite_info['price_range'])
+        rests = get_restaurant_data(location, radius, fav_info['cuisine'], fav_info['price_range'])
         # filter restaurants similar
-        recommendations = filter_restaurants(restaurants, favorite_info, radius, favorite_info['price_range'])
-        return jsonify(recommendations)
+        recs = filter_restaurants(rests, fav_info, radius, fav_info['price_range'])
+        return jsonify(recs)
     return jsonify([]), 404
 
 @app.route('/track_price', methods=['POST', 'OPTIONS'])

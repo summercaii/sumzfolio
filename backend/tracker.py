@@ -85,7 +85,7 @@ def send_email_notification(recipient_email, product_url, current_price, thresho
     try:
         server = smtplib.SMTP('smtp.gmail.com', 587)
         server.starttls()
-        server.login(sender_email, password)  # Use the app-specific password here
+        server.login(sender_email, password)
         text = message.as_string()
         server.sendmail(sender_email, recipient_email, text)
         server.quit()
