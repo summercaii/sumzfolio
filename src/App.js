@@ -7,6 +7,8 @@ import CoffeeShops from './components/CoffeeShops';
 import RestaurantRecs from './components/RestaurantRecs';
 import PriceTracker from './components/PriceTracker';
 import Map from './components/Map';
+import StravaWrapped from "./components/StravaWrapped";
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path="/restaurant-recs" element={<RestaurantRecs />} />
         <Route path="/price-tracker" element={<PriceTracker />} />
         <Route path="/map" element={<Map />} />
+        <Route path="/strava-wrapped" element={<StravaWrapped />} />
       </Routes>
     </Router>
   );

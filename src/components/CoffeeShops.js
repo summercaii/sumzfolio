@@ -15,7 +15,7 @@ function CoffeeShops() {
       </header>
 
       <section id="coffee-shops">
-        <h2>Summer's Favorite Coffee Spots, Ranked!!!</h2>
+        <h2>My Favorite Coffee Spots Ranked!!!</h2>
         <div className="drink-preference"> <p>Will always order a latte with oat milk</p></div>
         <div className="content-wrapper">
           {/* Coffee Shop List */}

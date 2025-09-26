@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/restaurant.css';
+import { API_URL } from '../api';
 
 function RestaurantRecs() {
   const [restaurant, setRestaurant] = useState('');
@@ -9,35 +10,36 @@ function RestaurantRecs() {
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(''); 
-    setResults([]);
-
-    try {
-      const API_URL = process.env.NODE_ENV === 'production' ? 'https://summer-cai-2d1ea290d5a4.herokuapp.com' : 'http://localhost:5000';
-
-      const response = await fetch(`${API_URL}/api/recommendations?restaurant=${encodeURIComponent(restaurant)}&location=${encodeURIComponent(location)}`, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
+      e.preventDefault();
+      setError('');
+      setResults([]);
+    
+      try {
+        const url = new URL(`${API_URL}/api/recommendations`);
+        url.search = new URLSearchParams({
+          restaurant,
+          location,
+        }).toString();
+    
+        const res = await fetch(url.toString()); // simple GET, no headers
+        const text = await res.text();           // capture body either way
+        let data;
+        try { data = JSON.parse(text); } catch {}
+    
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status} ${data?.error || text || ''}`.trim());
         }
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        if (data.length > 0) {
+    
+        if (Array.isArray(data) && data.length > 0) {
           setResults(data);
         } else {
           setError('No recommendations found. Please try again.');
         }
-      } else {
-        setError('No recommendations found. Please try again.');
+      } catch (err) {
+        console.error('Fetch error:', err);
+        setError('Error fetching recommendations. Please try again later.');
       }
-    } catch (err) {
-      setError('Error fetching recommendations. Please try again later.');
-    }
-  };
+    };
 
   return (
     <div>

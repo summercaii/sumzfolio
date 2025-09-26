@@ -63,7 +63,6 @@ function PriceTracker() {
           <div className="form-section">
             <form id="price-tracker-form" onSubmit={handleSubmit}>
               <div className="form-group">
-                <p>If it's on sale, I'm basically saving money right... </p>
                 <p>Give me the product link and the percent sale or price (or both), and I'll email you when it happens :D Shop smarter, not harder...</p>
                 <input 
                   type="text" 

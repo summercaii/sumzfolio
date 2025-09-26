@@ -1,52 +1,108 @@
-/* Projects Section */
+
 #projects {
     padding: 20px;
     margin: 100px auto 60px;
-    background-color: rgba(255, 255, 255, 0.7);
-    max-width: 900px; 
-    border-radius: 15px; 
-}
-
-/* Individual Project Container */
-.project {
+    background-color: rgba(255, 255, 255, 0.7); 
+    max-width: 900px;
+    border-radius: 15px;
+  }
+  
+  .project {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 40px;
     padding: 20px;
-}
-
-/* Project Text */
-.project-text {
+  }
+  
+  /* Text column */
+  .project-text {
     flex: 1;
     padding-right: 20px;
-}
-
-/* Project Image */
-.project-image {
+  }
+  
+  /* Image column */
+  .project-image {
     flex: 0 0 300px;
-}
-
-.project-image img {
+  }
+  
+  .project-image img {
     width: 100%;
     max-width: 250px;
     max-height: 250px;
     object-fit: cover;
     border-radius: 10px;
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-    .project {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .project-image {
-        margin-top: 20px;
-    }
-
-    .project-text {
-        padding-right: 0;
-    }
-}
+  }
+  
+  /* ===== Media (video) column for Caltrans block ===== */
+  .project-media { width: 100%; }
+  
+  .project-video,
+  .project-media video {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+  
+  /* ===== “Current” list styles brought over ===== */
+  .sub-list {
+    margin-left: 25px;
+    padding-left: 20px;
+    list-style-type: circle;
+  }
+  
+  .sub-list li {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  
+  /* ===== Optional pill button (kept from current.css if you reuse it) ===== */
+  .project-button {
+    background-color: #f48fb1;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 15px;
+  }
+  .project-button:hover {
+    background-color: #d81b60;
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .project { flex-direction: column; text-align: center; }
+    .project-image { margin-top: 20px; }
+    .project-text { padding-right: 0; }
+  }
+  
+.caltrans-project {
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .caltrans-project .project-text {
+    padding-right: 0; 
+    margin-bottom: 1rem; 
+  }
+  
+  .caltrans-project .project-media {
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+  }
+  
+  .caltrans-project .project-video {
+    max-width: 600px; 
+    width: 100%;
+    border-radius: 12px;
+  }
+  
