@@ -12,6 +12,7 @@ ALLOWED_ORIGINS = {
     "https://summer-cai.com",
     "http://localhost:3000", "http://127.0.0.1:3000",
     "http://localhost:5173", "http://127.0.0.1:5173",
+    "https://summer-cai-2d1ea290d5a4.herokuapp.com",
 }
 
 def create_app():
@@ -38,7 +39,11 @@ def create_app():
     # Liveness
     @app.route("/healthz")
     def healthz():
-        return {"ok": True}, 200
+        return jsonify(ok=True)
+
+    @app.route("/routes")
+    def routes():
+        return jsonify(routes=[str(r) for r in app.url_map.iter_rules()])
 
     # Ensure CORS header is present even on errors
     @app.after_request
