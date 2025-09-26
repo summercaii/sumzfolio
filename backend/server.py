@@ -5,8 +5,8 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from werkzeug.middleware.proxy_fix import ProxyFix
 
-from restaurants import restaurants_bp
-from strava import strava_bp
+from backend.restaurants import restaurants_bp
+from backend.strava import strava_bp
 
 ALLOWED_ORIGINS = {
     "https://summer-cai.com",
