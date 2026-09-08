@@ -3,6 +3,7 @@ import React from 'react';
 import './styles/projects.css';
 import wefitHome from '../photos/wefit/home.jpg';
 import wefitFeed1 from '../photos/wefit/feed1.jpg';
+import wefitFeed4 from '../photos/wefit/feed4.jpg';
 import wefitChallenges from '../photos/wefit/challenges.jpg';
 
 function Projects() {
@@ -14,15 +15,26 @@ function Projects() {
         <div className="project-text">
           <h3>WeFit</h3>
           <p>
-            Built with a team of 2, WeFit is a social fitness app used by 10+ active users: log workouts across
+            Built with a team of 2, WeFit is a social fitness app: log workouts across
             3 activity types (running, weightlifting, and basketball), earn points and streaks, join group
             challenges with friends, and share progress in a social feed with likes and comments — all backed by
-            Supabase (Auth, Postgres, and Storage for photo/video posts) in a native Swift/SwiftUI app.
+            Supabase (Auth, Postgres, and Storage for photo/video posts) in a native Swift/SwiftUI app. Also
+            integrates Strava via OAuth to auto-import runs, and parses weight-training sessions logged through
+            Hevy (which syncs to Strava) into full exercise/set/rep/weight detail.
           </p>
+          <a
+            href="https://github.com/summercaii/WeFit"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-link"
+          >
+            Github Link
+          </a>
         </div>
         <div className="project-gallery">
           <img src={wefitHome} alt="WeFit home screen with stats and recent activities" />
           <img src={wefitFeed1} alt="WeFit social feed with a workout video post" />
+          <img src={wefitFeed4} alt="WeFit social feed post" />
           <img src={wefitChallenges} alt="WeFit group challenges screen" />
         </div>
       </div>

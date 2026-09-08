@@ -77,6 +77,19 @@
     background-color: #d81b60;
     transform: scale(1.05);
   }
+
+  /* ===== Lightweight text link (e.g. "Github Link") ===== */
+  .project-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f48fb1;
+  }
+  .project-link:hover {
+    color: #d81b60;
+    text-decoration: underline;
+  }
   
   @media (max-width: 768px) {
     .project { flex-direction: column; text-align: center; }
@@ -118,14 +131,15 @@
   }
 
   .project-gallery img {
-    width: 260px;
-    max-width: 45%;
+    width: 200px;
+    max-width: 22%;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
   }
 
   @media (max-width: 600px) {
     .project-gallery img {
-      width: 80%;
+      width: 45%;
+      max-width: 45%;
     }
   }
