@@ -1,8 +1,66 @@
 // src/components/CoffeeShops.js
-import React from 'react';
+import React, { useState } from 'react';
 import './styles/coffee.css';
 
+import here from '../photos/here.jpg';
+import week from '../photos/week.jpg';
+import ralphs from '../photos/ralphs.jpg';
+import blue from '../photos/blue.jpg';
+import movement from '../photos/movement.jpg';
+import home from '../photos/home.jpg';
+import yeems from '../photos/yeems.PNG';
+import reca from '../photos/reca.PNG';
+import thyme from '../photos/thyme.PNG';
+
+const REGIONS = [
+  { key: 'sf', label: 'Bay Area' },
+  { key: 'la', label: 'Los Angeles' },
+  { key: 'atx', label: 'Austin' },
+  { key: 'japan', label: 'Japan' },
+];
+
+const SHOPS = [
+  // Japan
+  { name: 'Glitch Coffee & Roasters', url: 'https://glitchcoffee.com/', city: 'Tokyo, Japan', region: 'japan', photo: null, notes: 'Add your order here' },
+  { name: 'Here Kyoto', url: 'https://coffeehere.world/', city: 'Kyoto, Japan', region: 'japan', photo: here, notes: 'Add your order here' },
+  { name: 'Kurasu Kyoto Stand', url: 'https://jp.kurasu.kyoto/', city: 'Kyoto, Japan', region: 'japan', photo: null, notes: 'Add your order here' },
+  { name: 'WEEKENDERS COFFEE TOMINOKOJI', url: 'http://www.weekenderscoffee.com/', city: 'Kyoto, Japan', region: 'japan', photo: week, notes: 'Add your order here' },
+  { name: 'Blue Bottle Coffee', url: 'https://bluebottlecoffee.com/', city: 'Ginza, Tokyo, Japan', region: 'japan', photo: blue, notes: 'Add your order here' },
+  { name: "Ralph's Coffee", url: 'http://www.ralphs-coffee.com/', city: 'Tokyo, Japan', region: 'japan', photo: ralphs, notes: 'Add your order here' },
+  { name: "Wasachi", url: null, city: 'Tokyo, Japan', region: 'japan', photo: null, notes: 'Add your order here' },
+
+
+  // SF Bay Area
+  { name: 'The Coffee Movement', url: 'https://www.thecoffeemovement.com/', city: 'San Francisco, CA', region: 'sf', photo: movement, notes: 'Add your order here' },
+  { name: 'Home Coffee Roasters', url: 'http://homecoffeesf.com/', city: 'San Francisco, CA', region: 'sf', photo: home, notes: 'Add your order here' },
+  { name: 'Rise & Grind Coffeehouse', url: 'https://www.riseandgrind-sf.com/', city: 'San Francisco, CA', region: 'sf', photo: null, notes: 'Add your order here' },
+  { name: 'Kaizen Coffee', url: null, city: 'San Mateo, CA', region: 'sf', photo: null, notes: 'Add your order here' },
+  { name: 'Academic Coffee', url: null, city: 'Santa Clara, CA', region: 'sf', photo: null, notes: 'Add your order here' },
+  { name: 'Medleno Coffee Shop & Roastery', url: 'http://www.medleno.com/', city: 'Danville, CA', region: 'sf', photo: null, notes: 'Add your order here' },
+  { name: 'Voyager Craft Coffee', url: 'https://www.voyagercraftcoffeeorders.com/', city: 'San Jose, CA', region: 'sf', photo: null, notes: 'Add your order here' },
+
+  // LA
+  { name: 'Cassel Earth Coffee', url: null, city: 'Irvine, CA', region: 'la', photo: null, notes: 'Add your order here' },
+  { name: 'Yeems Coffee', url: 'http://www.yeemscoffee.com/', city: 'Los Angeles, CA', region: 'la', photo: yeems, notes: 'Add your order here' },
+  { name: 'Re Ca Phe', url: null, city: 'Fountain Valley, CA', region: 'la', photo: reca, notes: 'Add your order here' },
+  { name: '3THYME COFFEE', url: 'https://3thyme.com/index.html/', city: 'Los Angeles, CA', region: 'la', photo: thyme, notes: 'Add your order here' },
+  { name: 'Stereoscope Coffee', url: 'https://www.stereoscopecoffee.com/', city: 'Los Angeles, CA', region: 'la', photo: null, notes: 'Add your order here' },
+  { name: 'Alchemist Coffee Project', url: 'https://alchemistcp.com/', city: 'Los Angeles, CA', region: 'la', photo: null, notes: 'Add your order here' },
+  { name: 'SERIES A Coffee', url: 'https://www.seriesacoffeeca.com/', city: 'Beverly Hills, CA', region: 'la', photo: null, notes: 'Add your order here' },
+  { name: 'SORO Coffee', url: 'https://www.sorocoffee.com/', city: 'Los Angeles, CA', region: 'la', photo: null, notes: 'Add your order here' },
+
+  // ATX
+  { name: 'Godsent Coffee', url: null, city: 'Austin, TX', region: 'atx', photo: null, notes: 'Add your order here' },
+  { name: 'Desnudo Coffee', url: 'https://desnudocoffee.com/', city: 'Austin, TX', region: 'atx', photo: null, notes: 'Add your order here' },
+  { name: 'Fleet Coffee', url: 'https://fleetcoffee.com/', city: 'Austin, TX', region: 'atx', photo: null, notes: 'Add your order here' },
+  { name: 'Idlewild Coffee', url: 'https://www.idlewildcoffee.com/', city: 'Austin, TX', region: 'atx', photo: null, notes: 'Add your order here' },
+];
+
 function CoffeeShops() {
+  const [region, setRegion] = useState('sf');
+
+  const shown = SHOPS.filter((s) => s.region === region);
+
   return (
     <div>
       <header>
@@ -16,91 +74,47 @@ function CoffeeShops() {
 
       <section id="coffee-shops">
         <h2>My Favorite Coffee Spots Ranked!!!</h2>
-        <div className="drink-preference"> <p>Will always order a latte with oat milk</p></div>
-        <div className="content-wrapper">
-          {/* Coffee Shop List */}
-          <div className="coffee-shop-list">
-            <ol>
-              <li><strong><a href="https://coffeehere.world/">Here Kyoto</a></strong> (Kyoto, Japan)</li>
-              <li><strong><a href="https://jp.kurasu.kyoto/">Kurasu Kyoto Stand</a></strong> (Kyoto, Japan)</li>
-              <li><strong><a href="http://www.weekenderscoffee.com/">WEEKENDERS COFFEE TOMINOKOJI</a></strong> (Kyoto, Japan)</li>
-              <li><strong><a href="https://www.thecoffeemovement.com/">The Coffee Movement</a></strong> (San Francisco, CA)</li>
-              <li><strong><a href="https://bluebottlecoffee.com/">Blue Bottle Coffee</a></strong> (Kyoto, Japan)</li>
-              <li><strong><a href="https://www.yelp.com/biz/cassel-earth-coffee-irvine-2">Cassel Earth Coffee</a></strong> (Irvine, CA)</li>
-              <li><strong><a href="http://www.loquatcoffee.com/">Loquat Coffee</a></strong> (Los Angeles, CA)</li>
-              <li><strong><a href="http://homecoffeesf.com/">Home Coffee Roasters</a></strong> (San Francisco, CA)</li>
-              <li><strong><a href="https://www.riseandgrind-sf.com/">Rise & Grind Coffeehouse</a></strong> (San Francisco, CA)</li>
-              <li><strong><a href="http://www.yeemscoffee.com/">Yeems Coffee</a></strong> (Los Angeles, CA)</li>
-              <li><strong><a href="http://scoutcoffeeco.com/">Scout Coffee</a></strong> (San Luis Obispo, CA)</li>
-              <li><strong><a href="http://marucoffee.com/">Maru Coffee</a></strong> (Los Angeles, CA)</li>
-              <li><strong><a href="https://www.vervecoffee.com/pages/locations-san-francisco">Verve Coffee Roasters</a></strong> (Tokyo, Japan)</li>
-              <li><strong><a href="http://www.medleno.com/">Medleno Coffee Shop & Roastery</a></strong> (Danville, CA)</li>
-              <li><strong><a href="http://www.keancoffee.com/">Kéan Coffee Artisan Roasters</a></strong> (Tustin, CA)</li>
-              <li><strong><a href="https://www.yelp.com/biz/re-ca-phe-fountain-valley-2">Re Ca Phe</a></strong> (Fountain Valley, CA)</li>
-              <li><strong><a href="https://www.voyagercraftcoffeeorders.com/">Voyager Craft Coffee</a></strong> (San Jose, CA)</li>
-              <li><strong><a href="http://www.ralphs-coffee.com/">Ralph's Coffee</a></strong> (Tokyo, Japan)</li>
-              <li><strong><a href="https://3thyme.com/index.html/">3THYME COFFEE</a></strong> (Los Angeles, California)</li>
-              <li><strong><a href="https://www.pulleycollective.com/">Pulley Coffee Bar</a></strong> (Manhattan, NY)</li>
-              <li><strong><a href="https://www.stereoscopecoffee.com/">Stereoscope Coffee</a></strong> (Los Angeles, CA)</li>
-            </ol>
-          </div>
 
-          {/* Photo Gallery */}
-          <div className="photo-gallery2">
-            <div className="gallery-item">
-              <img src={require('../photos/here.jpg')} alt="Here Kyoto Coffee" />
-              <div className="caption">Here Kyoto</div>
+        <div className="region-tabs">
+          {REGIONS.map((r) => (
+            <button
+              key={r.key}
+              className={`region-tab${region === r.key ? ' active' : ''}`}
+              onClick={() => setRegion(r.key)}
+            >
+              {r.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="coffee-grid">
+          {shown.map((shop) => (
+            <div className="coffee-card" key={shop.name}>
+              <div className="coffee-card-photo">
+                {shop.photo ? (
+                  <img src={shop.photo} alt={shop.name} />
+                ) : (
+                  <div className="coffee-card-photo-placeholder">No photo yet</div>
+                )}
+              </div>
+              <div className="coffee-card-body">
+                <h3>
+                  {shop.url ? (
+                    <a href={shop.url} target="_blank" rel="noopener noreferrer">{shop.name}</a>
+                  ) : (
+                    shop.name
+                  )}
+                </h3>
+                <p className="coffee-card-city">{shop.city}</p>
+                <p className="coffee-card-notes">{shop.notes}</p>
+              </div>
             </div>
-            <div className="gallery-item">
-              <img src={require('../photos/week.jpg')} alt="Weekenders Coffee" />
-              <div className="caption">Weekenders Coffee</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/ralphs.jpg')} alt="Ralph's Coffee" />
-              <div className="caption">Ralph's Coffee</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/blue.jpg')} alt="Blue Bottle Ginza" />
-              <div className="caption">Blue Bottle Ginza</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/movement.jpg')} alt="Coffee Movement" />
-              <div className="caption">Coffee Movement</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/loquat.jpg')} alt="Loquat Coffee" />
-              <div className="caption">Loquat Coffee</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/yeems.PNG')} alt="Loquat Coffee" />
-              <div className="caption">Yeems Coffee</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/reca.PNG')} alt="Loquat Coffee" />
-              <div className="caption">Re Ca Phe</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/pulley.PNG')} alt="Loquat Coffee" />
-              <div className="caption">Pulley Coffee Bar</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/thyme.PNG')} alt="Loquat Coffee" />
-              <div className="caption">3 Thyme Coffee</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/home.jpg')} alt="Home Coffee Roastery" />
-              <div className="caption">Home Coffee Roastery</div>
-            </div>
-            <div className="gallery-item">
-              <img src={require('../photos/maru.jpg')} alt="Maru Coffee" />
-              <div className="caption">Maru Coffee</div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
       <footer>
-        <p>&copy; 2024 Coffee Shops</p>
+        <p>&copy; 2026 Coffee Shops</p>
       </footer>
     </div>
   );

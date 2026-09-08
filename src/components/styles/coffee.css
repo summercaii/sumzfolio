@@ -1,114 +1,139 @@
 /* Coffee Shop Section */
 #coffee-shops {
-    background-color: rgb(255, 255, 255); 
+    background-color: rgb(255, 255, 255);
     padding: 40px;
     border-radius: 15px;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
-}
-
-#coffee-shops ol {
-    list-style-type: decimal;
-    margin: 0;
-    padding-left: 20px;
-}
-
-#coffee-shops ol li {
-    margin-bottom: 15px;
-}
-
-#coffee-shops ol li strong {
-    font-size: 1.2rem;
-}
-
-#coffee-shops ol li p {
-    margin: 5px 0;
-}
-
-.photo-gallery2 {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Two columns */
-    gap: 15px;
-    margin-top: 20px;
-    width: 100%; 
-    max-width: 300px; 
-    margin-left: auto; 
-    margin-right: auto; 
-}
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-.caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: white;
-    text-align: center;
-    padding: 8px;
-    font-size: 0.8rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover .caption {
-    opacity: 1;
-}
-
-.content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.coffee-shop-list {
-    flex: 1;
-    padding-right: 20px;
-}
-
-@media (max-width: 768px) {
-    .content-wrapper {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .coffee-shop-list {
-        padding-right: 0;
-        text-align: center;
-    }
-
-    .photo-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-item {
-        width: 100px;
-        height: 100px;
-    }
 }
 
 .drink-preference {
     font-size: 1.2em;
     margin: 20px 0;
     color: #6B4E16;
-  }
-  
+}
+
+/* Region tabs */
+.region-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0 30px;
+}
+
+.region-tab {
+    background-color: #f2f2f2;
+    color: #444;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.region-tab:hover {
+    background-color: #e8d9c3;
+}
+
+.region-tab.active {
+    background-color: #6B4E16;
+    color: white;
+}
+
+/* Card grid */
+.coffee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.coffee-card {
+    border: 1px solid #eee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.coffee-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.coffee-card-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f2f2f2;
+}
+
+.coffee-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.coffee-card-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 10px;
+}
+
+.coffee-card-body {
+    padding: 14px 16px 18px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.coffee-card-body h3 {
+    font-size: 1.05rem;
+    margin: 0 0 4px;
+}
+
+.coffee-card-body h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.coffee-card-body h3 a:hover {
+    text-decoration: underline;
+}
+
+.coffee-card-city {
+    font-size: 0.85rem;
+    color: #777;
+    margin: 0 0 8px;
+}
+
+.coffee-card-notes {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #6B4E16;
+    margin: 0;
+}
+
+.empty-region {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 30px 0;
+}
+
+@media (max-width: 600px) {
+    .coffee-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}

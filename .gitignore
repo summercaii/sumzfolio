@@ -26,3 +26,6 @@ __pycache__/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# unprocessed full-res originals (compressed .jpg versions are committed instead)
+src/photos/food/*.png

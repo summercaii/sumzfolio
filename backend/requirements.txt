@@ -43,7 +43,7 @@ multidict==6.0.4
 mysql-connector-python==8.3.0
 nest-asyncio==1.6.0
 nltk>=3.9
-numpy==1.24.4
+numpy>=1.26.0
 openai==0.27.8
 packaging==23.1
 pandas==2.0.3
