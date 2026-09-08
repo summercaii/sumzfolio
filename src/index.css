@@ -1,0 +1,158 @@
+/* General Styles */
+body {
+  font-family: 'DM Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('photos/pinksky.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+  line-height: 1.8;
+  margin-top: 200px;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
+  
+}
+/* Header Styles */
+header {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1.5rem 0;
+  text-align: center;
+  position: fixed;
+  height: 120px;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  color:#ffb6c1;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+header nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+header nav ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+header nav ul li a {
+  color: #ffb6c1;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #ffb6c1;
+}
+
+/* General Links */
+a {
+  color: #ffb6c1;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ff80ab;
+}
+
+/* Button Styles */
+button {
+  background-color: #f48fb1;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  margin: 20px auto;
+}
+
+button:hover {
+  background-color: #ff80ab;
+  transform: translateY(-5px);
+}
+
+button[type="submit"] {
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff9c;
+  color: #ffb6c1;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+}
+
+footer a {
+  color: #f48fb1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #ffb6c1;
+}
+
+/* Headings */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  color: #ffb6c1;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 40px 20px;
+    margin: 120px 20px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+
+/* Content Layout */
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
