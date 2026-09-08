@@ -40,7 +40,7 @@ const SHOPS = [
   { name: 'Voyager Craft Coffee', url: 'https://www.voyagercraftcoffeeorders.com/', city: 'San Jose, CA', region: 'sf', photo: null, notes: 'Add your order here' },
 
   // LA
-  { name: 'Cassel Earth Coffee', url: null, city: 'Irvine, CA', region: 'la', photo: null, notes: 'Add your order here' },
+  { name: 'Cassel Earth Coffee', url: null, city: 'Irvine, CA', region: 'la', photo: null, notes: 'ICED OAT MILK LATTE' },
   { name: 'Yeems Coffee', url: 'http://www.yeemscoffee.com/', city: 'Los Angeles, CA', region: 'la', photo: yeems, notes: 'Add your order here' },
   { name: 'Re Ca Phe', url: null, city: 'Fountain Valley, CA', region: 'la', photo: reca, notes: 'Add your order here' },
   { name: '3THYME COFFEE', url: 'https://3thyme.com/index.html/', city: 'Los Angeles, CA', region: 'la', photo: thyme, notes: 'Add your order here' },
@@ -63,15 +63,6 @@ function CoffeeShops() {
 
   return (
     <div>
-      <header>
-        <h1>Summer Cai</h1>
-        <nav>
-          <ul>
-            <li><a href="/">Back to Portfolio</a></li>
-          </ul>
-        </nav>
-      </header>
-
       <section id="coffee-shops">
         <h2>My Favorite Coffee Spots Ranked!!!</h2>
 

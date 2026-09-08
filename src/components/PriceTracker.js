@@ -48,15 +48,6 @@ function PriceTracker() {
 
   return (
     <div>
-      <header>
-        <h1>Summer Cai</h1>
-        <nav>
-          <ul>
-            <li><a href="/">Back to Portfolio</a></li>
-          </ul>
-        </nav>
-      </header>
-
       <section id="price-tracker">
         <h2>Summer's Shopping Assistant</h2>
         <div className="">

@@ -1,6 +1,6 @@
 Summer Cai
 San Ramon, CA | summercai8@gmail.com | (925) 208-9272
-https://summer-cai.com | https://www.linkedin.com/in/summer-cai
+http://summer-cai.com | https://www.linkedin.com/in/summer-cai
 EDUCATION 
 California Polytechnic State University, San Luis Obispo						        Jun. 2025
 Bachelor of Science in Computer Engineering, Cum Laude
@@ -14,22 +14,19 @@ Software Engineer												     Austin, TX
 Developed Java/Spring Boot microservices and React/TypeScript applications supporting Braintree's global post-processing platform for merchant funding, settlement, disputes, and payment operations.
 Designed and built an AI-powered incident triage platform processing 400+ alerts per month across multiple observability systems, reducing triage time by 90% (from ~20 min to ~2 min) through automated diagnostics and root-cause insights delivered via Slack.
 Improved production observability by building a Datadog monitoring dashboard and alerting suite for a merchant processing 35M+ transactions and $8.5B in quarterly TPV, enabling faster detection and investigation of payment-processing incidents.
-Investigate and resolve production issues involving batch processing, authorization declines, transaction failures, and merchant payment escalations across high-volume payment systems.
+Investigated and resolved production issues involving batch processing, authorization declines, transaction failures, and merchant payment escalations across high-volume payment systems.
 Western Digital										           Jun. 2024 – Sept. 2024
 Embedded Software Development Engineering Intern					      		      Irvine, CA
 Developed and optimized firmware for enterprise hard disk drives using C++ and Python, incorporating Continuous Integration/Continuous Deployment (CI/CD) practices to ensure scalable, reliable code aligned with industry standards.
 Designed and implemented software algorithms and data paths, contributing to the efficient operation of hardware cores and systems, ensuring firmware functionality met performance expectations.
 Contributed to the restructuring of command handlers by designing standardized command execution files and objects, following the ACS6 standard to ensure consistency and accuracy in handling hardware commands.
-Prototype Vehicles Laboratory								          Sept. 2023 – Jun. 2024 
-Software Engineer											 San Luis Obispo, CA
-Collaborated on the front-end development for the vehicle control system interface, enabling operators to interact seamlessly with low-voltage systems.
-Designed and implemented real-time data visualization features, enhancing the monitoring and display of vehicle metrics to improve usability and operational efficiency.
+
 PROJECTS 
-Caltrans Traffic Detection System							                       Sept. 2024 - Mar. 2025
-Worked with Caltrans team and built a real-time traffic monitoring system using YOLOv8, ReactJS, ExpressJS, and PostgreSQL, automating vehicle detection, classification, and tracking from live Caltrans camera feeds.
-Optimized model accuracy (98%) and system performance, implementing multi-threaded buffering and cloud GPU acceleration for real-time processing and scalability.
-Developed an interactive dashboard for visualizing annotated traffic data, vehicle counts, and movement metrics, improving accessibility for transportation analysis.
-Fitness Community Application									 Jan. 2025 - Jun. 2025
+WeFit												 Jan. 2025 - Jun. 2025
 Developed an iOS fitness application using Swift and SwiftUI, integrating Apple HealthKit for real-time fitness tracking and activity monitoring.
 Implementing backend services with Firebase to enable user authentication, data synchronization, and cloud storage for progress tracking and goal setting.
 Designing a gamified progress tracking system with dynamic UI components, real-time leaderboards, and social engagement features using Cloud Firestore for seamless group interactions.
+Caltrans Traffic Detection System							                       Sept. 2024 - Mar. 2025
+Built WeFit, a social fitness iOS application in Swift/SwiftUI backed by Supabase (Postgres, Auth, Storage) for real-time data sync across 10+ active users.
+Implemented workout logging across 3 activity types (running, weightlifting, and basketball), a points-and-streaks gamification engine, and group challenges with goal tracking.
+Built a social feed with likes and comments backed by Supabase Storage for media uploads, enabling users to share workout photos/videos and engage with each other's progress.

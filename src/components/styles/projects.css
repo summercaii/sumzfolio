@@ -84,25 +84,48 @@
     .project-text { padding-right: 0; }
   }
   
+.stacked-project,
 .caltrans-project {
     flex-direction: column;
     text-align: left;
   }
-  
+
+  .stacked-project .project-text,
   .caltrans-project .project-text {
-    padding-right: 0; 
-    margin-bottom: 1rem; 
+    padding-right: 0;
+    margin-bottom: 1rem;
   }
-  
+
   .caltrans-project .project-media {
     width: 100%;
-    display: flex; 
+    display: flex;
     justify-content: center;
   }
-  
+
   .caltrans-project .project-video {
-    max-width: 600px; 
+    max-width: 600px;
     width: 100%;
     border-radius: 12px;
   }
-  
+
+  /* ===== Screenshot gallery (shown below the description) ===== */
+  .project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .project-gallery img {
+    width: 260px;
+    max-width: 45%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  }
+
+  @media (max-width: 600px) {
+    .project-gallery img {
+      width: 80%;
+    }
+  }

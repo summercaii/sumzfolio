@@ -1,51 +1,42 @@
 // src/components/Projects.js
 import React from 'react';
 import './styles/projects.css';
-import recs from '../photos/recs.png';
-import strava from '../photos/strava.png';
-import { Link } from 'react-router-dom';
+import wefitHome from '../photos/wefit/home.jpg';
+import wefitFeed1 from '../photos/wefit/feed1.jpg';
+import wefitChallenges from '../photos/wefit/challenges.jpg';
 
 function Projects() {
   return (
     <section id="projects">
       <h2>Projects</h2>
 
-      <div className="project">
+      <div className="project stacked-project">
         <div className="project-text">
-          <h3>Summer's Restaurant Recommender</h3>
+          <h3>WeFit</h3>
           <p>
-            Suggests the best places to eat based on your favorite cuisine, price range, and location with real-time
-            ratings, reviews, and images.
+            Built with a team of 2, WeFit is a social fitness app used by 10+ active users: log workouts across
+            3 activity types (running, weightlifting, and basketball), earn points and streaks, join group
+            challenges with friends, and share progress in a social feed with likes and comments — all backed by
+            Supabase (Auth, Postgres, and Storage for photo/video posts) in a native Swift/SwiftUI app.
           </p>
-          <Link to="/restaurant-recs" className="try-btn">Try it out!!</Link>
         </div>
-        <div className="project-image">
-          <img src={recs} alt="Restaurant Recommender" />
+        <div className="project-gallery">
+          <img src={wefitHome} alt="WeFit home screen with stats and recent activities" />
+          <img src={wefitFeed1} alt="WeFit social feed with a workout video post" />
+          <img src={wefitChallenges} alt="WeFit group challenges screen" />
         </div>
       </div>
 
-      <div className="project">
-        <div className="project-text">
-          <h3>Strava Wrapped!!</h3>
-          <p>
-            For myself and anyone who uses Strava. Running the Austin marathon in February. Wish me luck
-          </p>
-          <Link to="/strava-wrapped" className="try-btn">Strava Wrapped</Link>
-        </div>
-        <div className="project-image">
-          <img src={strava} alt="Strava Wrapped" />
-        </div>
-      </div>
-
-      <div className="project caltrans-project">
+      <div className="project stacked-project">
       <div className="project-text">
-        <h3>Senior Capstone: Caltrans Traffic Detection System </h3>
+        <h3>Caltrans Traffic Detection System</h3>
         <p>
-          Real-time traffic analytics using computer vision and ML to automate vehicle detection, classification,
-          and flow analysis for Caltrans.<br />
-          Accuracy: fine-tuned a YOLOv11-based model to ~98% detection precision<br />
-          Dashboard: interactive counts, classifications, congestion patterns<br />
-      </p>
+          Partnered with Caltrans to build a real-time traffic monitoring system that automates vehicle detection,
+          classification, and flow analysis from live camera feeds using computer vision and machine learning.
+          Fine-tuned a YOLOv11-based model to ~98% detection precision, with multi-threaded buffering and cloud
+          GPU acceleration for real-time processing at scale, and built an interactive dashboard visualizing
+          vehicle counts, classifications, and congestion patterns for transportation analysis.
+        </p>
       </div>
       <div className="project-media">
         <video className="project-video" autoPlay loop muted playsInline>
@@ -54,19 +45,6 @@ function Projects() {
         </video>
       </div>
     </div>
-
-      {/* <div className="project">
-        <div className="project-text">
-          <h3>Summer's Shopping Assistant</h3>
-          <p>
-            Tracks Amazon prices and emails you when a product hits a target price or discount.
-          </p>
-          <Link to="/price-tracker" className="try-btn">Try it out!!</Link>
-        </div>
-        <div className="project-image">
-          <img src={amazon} alt="Amazon Price Tracker" />
-        </div>
-      </div> */}
     </section>
   );
 }

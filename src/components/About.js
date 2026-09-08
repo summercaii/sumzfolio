@@ -14,8 +14,7 @@ function About() {
           I'm Summer, a Software Engineer at PayPal working on Braintree's payments platform.
           I love turning ideas into reality — whether it's building production microservices,
           shipping AI-powered tooling, or exploring new side projects. When I'm not coding,
-          you can find me <Link to="/coffee-shops">at a coffee shop</Link>,
-          <Link to="/restaurant-recs"> trying new restaurants</Link>, at the gym or in the kitchen.
+          you can find me <Link to="/restaurant-recs">trying new restaurants</Link>, at the gym, or in the kitchen.
           Always open to new ideas and challenges — let's connect!
           </p>
         </div>
